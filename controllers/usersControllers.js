@@ -32,7 +32,13 @@ const signUp = async (req, res) => {
 
     return res
       .status(200)
-      .json({ email, token, role: user.role, _id: user._id });
+      .json({
+        email,
+        token,
+        role: user.role,
+        _id: user._id,
+        blocked: user.blocked,
+      });
   } catch (error) {
     return res.status(400).send({ error: error.message });
   }
@@ -66,7 +72,13 @@ const login = async (req, res) => {
 
     return res
       .status(200)
-      .send({ email, token, role: user.role, _id: user._id });
+      .send({
+        email,
+        token,
+        role: user.role,
+        _id: user._id,
+        blocked: user.blocked,
+      });
   } catch (error) {
     return res.status(400).send({ error: error.message });
   }
