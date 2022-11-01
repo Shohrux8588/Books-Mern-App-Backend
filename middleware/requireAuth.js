@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-const User = require("../models/userModel.js");
+const User = require("../models/usersModel.js");
 
 const requireAuth = async (req, res, next) => {
   const { authorization } = req.headers;
@@ -16,7 +16,6 @@ const requireAuth = async (req, res, next) => {
     req.user = await User.findOne({ _id }).select("_id");
     next();
   } catch (error) {
-    console.log(error);
     res.status(400).send({ error: "Request is not authorized" });
   }
 };

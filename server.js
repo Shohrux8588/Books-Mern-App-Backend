@@ -3,14 +3,20 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
-const userRoutes = require("./routes/user.js");
+const usersRoutes = require("./routes/usersRoutes.js");
+const booksRoutes = require("./routes/booksRoutes");
+const collectionsRoutes = require("./routes/collectionsRoutes");
 
 const app = express();
 
 app.use(express.json());
 app.use(cors());
 
-app.use("/user", userRoutes);
+app.use("/users", usersRoutes);
+
+app.use("/books", booksRoutes);
+
+app.use("/collections", collectionsRoutes);
 
 mongoose
   .connect(process.env.MONGODB_KEY)

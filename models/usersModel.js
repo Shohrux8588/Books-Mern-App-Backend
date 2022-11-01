@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const UserSchema = new mongoose.Schema(
+const UsersSchema = new mongoose.Schema(
   {
     email: {
       type: String,
@@ -16,8 +16,13 @@ const UserSchema = new mongoose.Schema(
       required: true,
       default: "user",
     },
+    blocked: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Project_Users", UserSchema);
+module.exports = mongoose.model("Project_Users", UsersSchema);
